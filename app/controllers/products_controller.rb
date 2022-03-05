@@ -67,7 +67,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :artist, :price, :vinyl_weight, :catalog_number, :condition, :user_id)
+      params.require(:product).permit(:name, :artist, :price, :vinyl_weight, :catalog_number, :condition, :user_id, :picture)
     end
 
     # verifying user is a seller before listing new product for sale
