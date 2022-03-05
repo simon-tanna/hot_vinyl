@@ -41,10 +41,7 @@
     <%= form.text_field :condition %>
   </div>
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
-  </div>
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
   <div class="actions">
     <%= form.submit %>

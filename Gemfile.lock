@@ -257,6 +257,7 @@ DEPENDENCIES
   jquery-rails
   listen (~> 3.3)
   pg (~> 1.1)
+  popper_js (~> 2.9.3)
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.6)
