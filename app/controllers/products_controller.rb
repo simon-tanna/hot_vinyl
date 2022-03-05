@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :verified_seller, only: [:new, :create]
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -66,5 +67,19 @@ class ProductsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :artist, :price, :vinyl_weight, :catalog_number, :condition, :user_id)
+    end
+
+    # verifying user is a seller before listing new product for sale
+    def verified_seller
+      if !current_user.seller?
+        redirect_to products_url, notice: "You must be registered as a seller to list an item"
+      end
+    end
+
+    # verifies the user owns a listing or has admin permissions
+    def owner_or_admin
+      if !current_user.admin? and current_user.id!=@product.user_id
+        redirect_to products_url, notice: "You must be the selling user or have administrative access to perform that action"
+      end
     end
 end
