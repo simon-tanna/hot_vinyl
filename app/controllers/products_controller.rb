@@ -2,6 +2,7 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :verified_seller, only: [:new, :create]
+  before_action :owner_or_admin, only: [:edit, :update, :destroy]
   # GET /products or /products.json
   def index
     @products = Product.all
