@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @product.artist %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Vinyl weight:</strong>
+  <%= @product.vinyl_weight %>
+</p>
+
+<p>
+  <strong>Catalog number:</strong>
+  <%= @product.catalog_number %>
+</p>
+
+<p>
+  <strong>Condition:</strong>
+  <%= @product.condition %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @product.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
