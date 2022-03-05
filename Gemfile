@@ -60,5 +60,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 # Custom gems
 gem 'bootstrap', '~> 5.1.3'
 gem 'jquery-rails'
-# gem 'devise'
+gem 'devise'
 # gem 'aws-sdk-s3', '~> 1.113'
