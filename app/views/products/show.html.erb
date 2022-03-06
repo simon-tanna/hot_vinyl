@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+<%# Image tag to display uploaded album artwork %>
+<%= image_tag @product.picture if @product.picture.attached? %>
 
 <p>
   <strong>Name:</strong>
