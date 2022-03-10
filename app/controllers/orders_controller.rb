@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :find_product, only: [:new, :create]
   before_action :charge_amount, only: [:new, :create]
+  before_action :description
   before_action :authenticate_user!
 
   def index
@@ -49,5 +50,9 @@ class OrdersController < ApplicationController
 
   def charge_amount
     @amount = (@product.price*100).to_i
+  end
+
+  def description
+    @description = "#{@product.name} by #{@product.artist}"
   end
 end

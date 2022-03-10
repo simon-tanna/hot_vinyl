@@ -1,6 +1,5 @@
 <h1> Product Checkout </h1>
 <p>You are about to buy <%= @product.name %> by <%= @product.artist %></p>
-<p>Total Price: $<%= @product.price %>0</p>
 
 <%= form_tag product_orders_path do %>
   <article>
@@ -10,13 +9,13 @@
       </div>
     <% end %>
     <label class="amount">
-      <span>Amount: $<%= @product.price %>0</span>
+      <span>Amount: <%= currency_view(@amount) %></span>
     </label>
   </article>
 
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="<% "#{@product.name} by #{@product.artist}" %>"
-          data-amount="<% @amount %>"
+          data-description="<%= @description %>"
+          data-amount="<%= @amount %>"
           data-locale="auto"></script>
 <% end %>
