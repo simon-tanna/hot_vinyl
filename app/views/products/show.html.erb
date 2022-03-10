@@ -43,7 +43,7 @@
 <% else %>
 <%# If user is not the seller, they will have the option to buy the item %>
 <%# Devise will handle authentication of this. If user is not signed in they will have an error message and redirect to signin page %>
-  <%= link_to 'Buy Me Now!', orders_new_path %>
+  <%= link_to 'Buy Me Now!', new_product_order_path(@product.id) %>
 <% end %>
 
 
