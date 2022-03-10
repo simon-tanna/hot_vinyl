@@ -33,6 +33,8 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # testing gem rspec
   gem 'rspec-rails'
+  # gem to handle .env files
+  gem 'dotenv-rails'
 end
 
 group :development do
