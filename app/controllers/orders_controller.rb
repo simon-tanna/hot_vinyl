@@ -21,8 +21,6 @@ class OrdersController < ApplicationController
       source: params[:stripeToken]
     )
 
-    # This is imported from the stripe tool module located in model/concerns
-    # customer = StripeTool.create_customer(email: params[:stripeEmail], stripe_token: params[:stripeToken])
     
     charge = Stripe::Charge.create(
       customer: customer.id,
@@ -31,8 +29,6 @@ class OrdersController < ApplicationController
       currency: 'aud'
     )
 
-    # This is imported from the stripe tool module located in model/concerns
-    # charge = StripeTool.create_charge(customer_id: customer_id, amount: @amount, description: 'Rails Stripe Customer')
 
     @order = Order.create(product: @product, user: current_user)
     @product.update(sold_status: true)
