@@ -1,5 +1,5 @@
 <h1> Product Checkout </h1>
-<p>You are about to buy <%= @product.name %></p>
+<p>You are about to buy <%= @product.name %> by <%= @product.artist %></p>
 <p>Total Price: $<%= @product.price %>0</p>
 
 <%= form_tag product_orders_path do %>

@@ -14,17 +14,24 @@ class OrdersController < ApplicationController
   def create
     # @amount = (@product.price*100).to_i
 
-    customer = Stripe::Customer.create(
-      email: params[:stripeEmail],
-      source: params[:stripeToken]
-    )
+    
+    # customer = Stripe::Customer.create(
+    #   email: params[:stripeEmail],
+    #   source: params[:stripeToken]
+    # )
 
-    charge = Stripe::Charge.create(
-      customer: customer.id,
-      amount: @amount,
-      description: 'Rails Stripe Customer', 
-      currency: 'aud'
-    )
+    # This is imported from the stripe tool module located in model/concerns
+    customer = StripeTool.create_customer(email: params[:stripeEmail], stripe_token: params[:stripeToken])
+    
+    # charge = Stripe::Charge.create(
+    #   customer: customer.id,
+    #   amount: @amount,
+    #   description: 'Rails Stripe Customer', 
+    #   currency: 'aud'
+    # )
+
+    # This is imported from the stripe tool module located in model/concerns
+    charge = StripeTool.create_charge(customer_id: customer_id, amount: @amount, description: 'Rails Stripe Customer')
 
     @order = Order.create(product: @product, user: current_user, price: @product.price)
 
