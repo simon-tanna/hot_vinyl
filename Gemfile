@@ -68,3 +68,5 @@ gem 'popper_js', '~> 2.9.3'
 gem "aws-sdk-s3", "~> 1.113"
 
 gem "stripe", "~> 5.45"
+
+gem "ultrahook"
