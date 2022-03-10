@@ -15,14 +15,17 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <tr>
-        <td><%= image_tag product.picture if product.picture.attached? %></td>
-        <td><%= product.name %></td>
-        <td><%= product.artist %></td>
-        <td><%= product.price %></td>
-        <td><%= product.user.username %></td>
-        <td><%= link_to 'Show', product %></td>
-      </tr>
+    <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
+      <% if product.sold_status == false %>
+        <tr>
+          <td><%= image_tag product.picture if product.picture.attached? %></td>
+          <td><%= product.name %></td>
+          <td><%= product.artist %></td>
+          <td>$<%= product.price %>0</td>
+          <td><%= product.user.username %></td>
+          <td><%= link_to 'Show', product %></td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

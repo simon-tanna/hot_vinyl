@@ -35,7 +35,7 @@ class OrdersController < ApplicationController
     # charge = StripeTool.create_charge(customer_id: customer_id, amount: @amount, description: 'Rails Stripe Customer')
 
     @order = Order.create(product: @product, user: current_user)
-
+    @product.update(sold_status: true)
     redirect_to orders_index_path
   rescue Stripe::CardError => e
     flash[:error] = e.message
