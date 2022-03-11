@@ -69,7 +69,7 @@ class CategoriesController < ApplicationController
     def category_params
       params.require(:category).permit(:name)
     end
-
+    # Only allows users with admin access to create, edit or destroy a category
     def is_admin
       if !current_user.admin?
         redirect_to categories_url, notice: "Must be an administrator to perform that action!"

@@ -16,14 +16,14 @@ class OrdersController < ApplicationController
 
   end
 
+  # GET for orders/new
   def new
     @order = Order.new
   end
 
+  # POST for orders with payment using stripe
   def create
-    # @amount = (@product.price*100).to_i
 
-    
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
       source: params[:stripeToken]
@@ -52,11 +52,11 @@ class OrdersController < ApplicationController
   def find_product
     @product = Product.find(params[:product_id])
   end
-
+  # converts payment amount to integer
   def charge_amount
     @amount = (@product.price*100).to_i
   end
-
+  # passes in description of product to allowed methods
   def set_description
     @description = "#{@product.name} by #{@product.artist}"
   end
