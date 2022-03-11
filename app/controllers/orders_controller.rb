@@ -4,8 +4,16 @@ class OrdersController < ApplicationController
   before_action :set_description, only: [:new, :create]
   before_action :authenticate_user!
 
+  # Displays the orders placed by the current user.
+  # The user will be redirected to products/index if they have not placed any orders
   def index
     @orders = current_user.orders
+
+    if current_user.orders.count < 1
+      flash[:alert] = 'You have no order history to display'
+      redirect_to products_url
+    end
+
   end
 
   def new
