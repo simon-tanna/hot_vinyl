@@ -1,11 +1,11 @@
 class OrdersController < ApplicationController
-  before_action :find_product, only: [:new, :create]
+  before_action :find_product, only: [:index, :new, :create]
   before_action :charge_amount, only: [:new, :create]
   before_action :set_description, only: [:new, :create]
   before_action :authenticate_user!
 
   def index
-
+    @orders = current_user.orders
   end
 
   def new
@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
 
     @order = Order.create(product: @product, user: current_user)
     @product.update(sold_status: true)
-    redirect_to orders_index_path
+    redirect_to orders_index_path, notice: "Congratulatons! You have just purchased #{@product.name}!"
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
