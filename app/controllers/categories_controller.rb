@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
 
   # GET /categories or /categories.json
   def index
@@ -66,5 +68,11 @@ class CategoriesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def category_params
       params.require(:category).permit(:name)
+    end
+
+    def is_admin
+      if !current_user.admin?
+        redirect_to categories_url, notice: "Must be an administrator to perform that action!"
+      end
     end
 end
