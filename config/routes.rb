@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   end
   devise_for :users
   root to: "home#index"
+  # routes for seller's listed items and user placed orders
   get '/my_selling_products', to: 'products#my_selling_products', as: 'my_selling_products'
   get 'orders/index', to: 'orders#index'
   # get 'orders/new', to: 'orders#new'
