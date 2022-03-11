@@ -12,14 +12,11 @@
   </thead>
 
   <tbody>
-    <% @products.each do |product| %>
+    <% @orders.each do |order| %>
         <tr>
-          <td><%= image_tag product.picture if product.picture.attached? %></td>
-          <td><%= product.name %></td>
-          <td><%= product.artist %></td>
-          <td>$<%= product.price %>0</td>
-          <td><%= product.user.username %></td>
-          <td><%= link_to 'Show', product %></td>
+          <td><%= order.product.name %></td>
+          <td><%= order.product.artist %></td>
+          <td>$<%= order.product.price %>0</td>
         </tr>
     <% end %>
   </tbody>

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :find_product, only: [:index, :new, :create]
+  before_action :find_product, only: [:new, :create]
   before_action :charge_amount, only: [:new, :create]
   before_action :set_description, only: [:new, :create]
   before_action :authenticate_user!
