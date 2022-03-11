@@ -8,6 +8,10 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  # GET method to show seller list of items they have listed for sale
+  def my_selling_products
+    @products = current_user.products
+  end
   # GET /products/1 or /products/1.json
   def show
   end
