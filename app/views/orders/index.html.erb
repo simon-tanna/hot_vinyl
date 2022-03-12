@@ -1,11 +1,12 @@
 <h1>My Orders</h1>
-<div class="container-fluid">
-<table>
+<div class="table-responsive">
+<table class="table align-middle">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Artist</th>
-      <th>Price</th>
+      <th scope="col">Name</th>
+      <th scope="col">Artist</th>
+      <th scope="col">Price</th>
+      <th scope="col">Your Receipt Url</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
           <td><%= order.product.name %></td>
           <td><%= order.product.artist %></td>
           <td>$<%= order.product.price %>0</td>
+          <td><%= link_to "See receipt", "#{order.receipt_url}", target: :_blank %></td>
         </tr>
     <% end %>
   </tbody>

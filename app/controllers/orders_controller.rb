@@ -39,7 +39,7 @@ class OrdersController < ApplicationController
     )
 
 
-    @order = Order.create(product: @product, user: current_user)
+    @order = Order.create(product: @product, user: current_user, receipt_url: charge.receipt_url)
     @product.update(sold_status: true)
     redirect_to orders_index_path, notice: "Congratulatons! You have just purchased #{@product.name}!"
   rescue Stripe::CardError => e

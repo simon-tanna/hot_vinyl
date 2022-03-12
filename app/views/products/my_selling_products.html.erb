@@ -10,6 +10,7 @@
       <th>Vinyl Weight</th>
       <th>Catalog Number</th>
       <th>Condition</th>
+      <th>Product Image</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,7 +20,6 @@
     <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
       <% if product.sold_status == false %>
         <tr>
-          <td><%= image_tag product.picture if product.picture.attached? %></td>
           <td><%= product.name %></td>
           <td><%= product.artist %></td>
           <td>$<%= product.price %>0</td>
@@ -27,6 +27,7 @@
           <td><%= product.vinyl_weight %></td>
           <td><%= product.catalog_number %></td>
           <td><%= product.condition %></td>
+          <td><%= image_tag product.picture if product.picture.attached? %></td>
           <td><%= link_to 'Show', product %></td>
         </tr>
       <% end %>

@@ -5,4 +5,7 @@ class User < ApplicationRecord
   has_many :orders
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  # Ensures there is no duplication of unique fields
+  validates :email, uniqueness: true
+  validates :username, uniqueness: true
 end
