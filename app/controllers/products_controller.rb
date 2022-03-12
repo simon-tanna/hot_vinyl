@@ -7,6 +7,10 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
   end
+  # GET search method for search function in navbar
+  def search
+    @products = Product.all.where("name LIKE ?", "%" + params[:q] + "%")
+  end
 
   # GET method to show seller list of items they have listed for sale
   def my_selling_products
