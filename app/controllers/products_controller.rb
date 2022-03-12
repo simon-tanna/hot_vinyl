@@ -10,7 +10,7 @@ class ProductsController < ApplicationController
   # GET search method for search function in navbar
   def search
     if params[:search].blank?
-      redirect_to products_path and return
+      redirect_to(products_path, alert: "You didn't enter anything to search!") and return
     else
       @parameter = params[:search].downcase
       @find_album = Product.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").or(Product.all.where("lower(artist) LIKE :search", search: "%#{@parameter}%"))
