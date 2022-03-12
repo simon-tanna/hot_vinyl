@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :charge_amount, only: [:new, :create]
   before_action :set_description, only: [:new, :create]
   before_action :authenticate_user!
-  before_action :is_owner
+  before_action :is_owner, only: [:new, :create]
 
   # Displays the orders placed by the current user.
   # The user will be redirected to products/index if they have not placed any orders
