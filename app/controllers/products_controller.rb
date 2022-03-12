@@ -9,7 +9,12 @@ class ProductsController < ApplicationController
   end
   # GET search method for search function in navbar
   def search
-    @products = Product.all.where("name LIKE ?", "%" + params[:q] + "%")
+    if params[:search].blank?
+      redirect_to products_path and return
+    else
+      @parameter = params[:search].downcase
+      @find_album = Product.all.where("lower(name) LIKE :search", search: "%#{@parameter}%").or(Product.all.where("lower(artist) LIKE :search", search: "%#{@parameter}%"))
+    end
   end
 
   # GET method to show seller list of items they have listed for sale
