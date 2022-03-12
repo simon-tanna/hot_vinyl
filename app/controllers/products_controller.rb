@@ -7,7 +7,9 @@ class ProductsController < ApplicationController
   def index
     @products = Product.all
   end
+
   # GET search method for search function in navbar
+  # Search parameters will be for album and artist
   def search
     if params[:search].blank?
       redirect_to(products_path, alert: "You didn't enter anything to search!") and return
@@ -21,6 +23,7 @@ class ProductsController < ApplicationController
   def my_selling_products
     @products = current_user.products
   end
+  
   # GET /products/1 or /products/1.json
   def show
   end
