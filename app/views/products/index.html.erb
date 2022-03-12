@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<h1>All Albums</h1>
 <div class="container-fluid">
 <table>
   <thead>
@@ -18,11 +18,11 @@
     <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
       <% if product.sold_status == false %>
         <tr>
-          <td><%= image_tag product.picture if product.picture.attached? %></td>
           <td><%= product.name %></td>
           <td><%= product.artist %></td>
           <td>$<%= product.price %>0</td>
           <td><%= product.user.username %></td>
+          <td><%= image_tag product.picture if product.picture.attached? %></td>
           <td><%= link_to 'Show', product %></td>
         </tr>
       <% end %>
