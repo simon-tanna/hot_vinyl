@@ -3,23 +3,23 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 <%# Username field added %>
-  <div class="field">
+  <div class="mb-3">
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, required: true %>
   </div>
 
-  <div class="field">
+  <div class="mb-3">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <%# Seller checkbox field %>
-  <div class="field">
-    <%= f.label :seller %>
-    <%= f.check_box :seller %>
+  <div class="mb-3">
+    <%= f.label "Would you like to sell items?" %>
+    <%= f.check_box :seller, class: "form-check-input" %>
   </div>
 
-  <div class="field">
+  <div class="mb-3">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -27,7 +27,7 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
-  <div class="field">
+  <div class="mb-3">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>

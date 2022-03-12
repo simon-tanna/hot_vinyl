@@ -1,8 +1,10 @@
-<h1>search results</h1>
+<h1>Search Results</h1>
 
-
+<div class="d-flex flex-column bd-highlight mb-3">
 <% @find_album.each do |album| %>
    <%= album.name %>
    <%= link_to 'Show', album %>
    <br>
 <% end %>
+<br>
+</div>

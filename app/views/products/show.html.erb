@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+
+<div class="container">
 <%# Image tag to display uploaded album artwork %>
 <%= image_tag @product.picture if @product.picture.attached? %>
 
@@ -51,5 +53,6 @@
   <%= link_to 'Buy Me Now!', new_product_order_path(@product.id) %>
 <% end %>
 
-
 <%= link_to 'Back', products_path %>
+
+</div>
