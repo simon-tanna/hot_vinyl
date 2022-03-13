@@ -3,6 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :products
   has_many :orders
+  has_many :reviews
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   # Ensures there is no duplication of unique fields
