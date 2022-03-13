@@ -1,6 +1,5 @@
-<%=%>
 
-<%= form_with(model: [@product,@review]) do |form| %>
+<%= form_with(model: [@product, @review]) do |form| %>
     <div>
         <%= form.label :comment%>
         <%= form.text_field :comment, required:true%>
@@ -10,5 +9,5 @@
         <%= form.text_field :rating, required:true%>
     </div>
     
-    <%=form.submit "Add review  " %>
+    <%=form.submit "Add review" %>
 <% end %>
