@@ -1,3 +1,14 @@
 <h1>Edit your review</h1>
 
-<%= render 'form' %>
+<%= form_with(model: [@product, @review]) do |form| %>
+    <div>
+        <%= form.label :comment%>
+        <%= form.text_field :comment, required:true%>
+    </div>
+    <div>
+        <%= form.label :rating%>
+        <%= form.text_field :rating, required:true%>
+    </div>
+    
+    <%=form.submit "Edit review" %>
+<% end %>
