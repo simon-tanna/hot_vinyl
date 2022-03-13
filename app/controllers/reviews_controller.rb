@@ -41,9 +41,9 @@ class ReviewsController < ApplicationController
         @product = Product.find(params[:product_id])
     end
 
-    # def find_review
-    #     @review = Review.find(params[:id])
-    # end
+    def find_review
+        @review = Review.find(params[:id])
+    end
 
     def owner_or_admin
         if !current_user.admin? and current_user.id!=@review.user_id

@@ -65,9 +65,14 @@
 
 <% if @product.sold_status == true %>
   <% if !@product.review %>
-  <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
-    <%= link_to "Add Review", new_product_review_path(@product.id) %>
+    <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
+      <%= link_to "Add Review", new_product_review_path(@product.id) %>
+    <% end %>
   <% end %>
+<% end %>
+<% if @product.sold_status == true %>
+  <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
+    <%= link_to "Edit Review", edit_product_review_path(@product.id) %>
   <% end %>
 <% end %>
 
