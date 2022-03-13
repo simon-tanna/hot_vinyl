@@ -60,10 +60,14 @@
 <%# Devise will handle authentication of this. If user is not signed in they will have an error message and redirect to signin page %>
   <% if !@product.sold_status %>
     <%= link_to 'Buy Me Now!', new_product_order_path(@product.id) %>
-  <% else %>
-    <%# <% if user_signed_in? and (current_user.admin? or current_user.id==@review.user_id) %>
-        <%# <%= link_to 'Edit Review', edit_product_review_path(@product.id) %>
-    <%# <% end %>
+  <% end %>
+<% end %>
+
+<% if @product.sold_status == true %>
+  <% if !@product.review %>
+  <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
+    <%= link_to "Add Review", new_product_review_path(@product.id) %>
+  <% end %>
   <% end %>
 <% end %>
 

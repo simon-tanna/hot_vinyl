@@ -7,7 +7,7 @@
       <th scope="col">Artist</th>
       <th scope="col">Price</th>
       <th scope="col">Your Receipt Url</th>
-      <th scope="col">Product Options</th>
+      <th scope="col">Product</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,9 +19,6 @@
           <td><%= order.product.artist %></td>
           <td>$<%= order.product.price %>0</td>
           <td><%= link_to "See receipt", "#{order.receipt_url}", target: :_blank %></td>
-          <% if !order.product.review %>
-            <td><%= link_to "Add Review", new_product_review_path(order.product) %></td>
-          <% end %>
           <td><%= link_to "Show Product", product_path(order.product) %></td>
         </tr>
     <% end %>
