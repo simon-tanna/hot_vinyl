@@ -3,6 +3,9 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :verified_seller, only: [:new, :create, :my_selling_products]
   before_action :owner_or_admin, only: [:edit, :update, :destroy]
+
+  helper_method :sort_column, :sort_direction
+
   # GET /products or /products.json
   def index
     @products = Product.all
@@ -25,7 +28,7 @@ class ProductsController < ApplicationController
   end
   
   def recently_sold
-    @products = Product.order(params[:sort] + ' ' + params[:direction])
+    @products = Product.order(sort_column + ' ' + sort_direction)
   end
   # GET /products/1 or /products/1.json
   def show
@@ -106,6 +109,14 @@ class ProductsController < ApplicationController
       if !current_user.admin? and current_user.id!=@product.user_id
         redirect_to products_url, notice: "You must be the selling user or have administrative access to perform that action"
       end
+    end
+
+    def sort_column
+      params[:sort] || 'name'
+    end
+
+    def sort_direction
+      params[:direction] || 'asc'
     end
 
 end
