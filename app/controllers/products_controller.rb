@@ -99,7 +99,7 @@ class ProductsController < ApplicationController
 
     # verifying user is a seller before listing new product for sale
     def verified_seller
-      if !current_user.seller?
+      if !user_signed_in? or !current_user.seller?
         redirect_to products_url, notice: "You must be registered as a seller to list an item"
       end
     end
