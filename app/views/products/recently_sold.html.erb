@@ -1,0 +1,32 @@
+<h1>Recently sold items</h1>
+
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col"><%= link_to 'Name', :sort => 'name' %></th>
+        <th scope="col"><%= link_to 'Artist', :sort => 'artist' %></th>
+        <th scope="col"><%= link_to 'Price', :sort => 'price' %></th>
+        <th scope="col"><%= link_to 'Seller', :sort => 'user_id' %></th>
+        <th scope="col">View Product</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+      <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
+        <% if product.sold_status == true %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.artist %></td>
+            <td>$<%= product.price %>0</td>
+            <td><%= product.user.username %></td>
+            <td><%= link_to 'Show', product %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<br>

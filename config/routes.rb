@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   # routes for seller's listed items and user placed orders
   get '/my_selling_products', to: 'products#my_selling_products', as: 'my_selling_products'
+  get '/recently_sold', to: 'products#recently_sold', as: 'recently_sold'
   get 'orders/index', to: 'orders#index'
   # route for the search function
   get 'search', to: 'products#search'

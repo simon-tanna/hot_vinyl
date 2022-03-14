@@ -6,4 +6,5 @@ class Product < ApplicationRecord
   has_one :review
   # Ensures fields essential to the operation of the application are present
   validates :name, :artist, :price, presence: true
+
 end

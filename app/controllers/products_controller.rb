@@ -24,6 +24,9 @@ class ProductsController < ApplicationController
     @products = current_user.products
   end
   
+  def recently_sold
+    @products = Product.order(params[:sort])
+  end
   # GET /products/1 or /products/1.json
   def show
   end
@@ -74,6 +77,7 @@ class ProductsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

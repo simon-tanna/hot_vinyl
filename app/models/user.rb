@@ -9,4 +9,5 @@ class User < ApplicationRecord
   # Ensures there is no duplication of unique fields
   validates :email, uniqueness: true
   validates :username, uniqueness: true
+
 end
