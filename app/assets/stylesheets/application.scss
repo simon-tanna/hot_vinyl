@@ -13,3 +13,11 @@
  *= require_self
  */
  @import "bootstrap";
+
+.arrow th .asc {
+    background-image: url(/images/up_arrow.png);
+}
+
+.arrow th .desc {
+    background-image: url(/images/down_arrow.png);
+}
