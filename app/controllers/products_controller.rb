@@ -25,7 +25,7 @@ class ProductsController < ApplicationController
   end
   
   def recently_sold
-    @products = Product.order(params[:sort])
+    @products = Product.order(params[:sort] + ' ' + params[:direction])
   end
   # GET /products/1 or /products/1.json
   def show
