@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     # This checks if the current 
     if current_user.products.count < 1
       flash[:alert] = 'You have not listed any items to sell'
-      redirect_to products_url
+      redirect_to new_product_path
     end
   end
   
