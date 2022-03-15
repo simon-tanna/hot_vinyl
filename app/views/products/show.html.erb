@@ -78,10 +78,10 @@
     <% end %>
   <% end %>
 <% end %>
-<% if @product.sold_status == true %>
-  
+
+<% if @product.sold_status == true %>  
+  <%= link_to 'Back', recently_sold_path %>
+<% else %>
+  <%= link_to 'Back', products_path %>
 <% end %>
-
-<%= link_to 'Back', products_path %>
-
 </div>
