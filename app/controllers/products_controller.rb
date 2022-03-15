@@ -25,6 +25,11 @@ class ProductsController < ApplicationController
   # GET method to show seller list of items they have listed for sale
   def my_selling_products
     @products = current_user.products
+    # This checks if the current 
+    if current_user.products.count < 1
+      flash[:alert] = 'You have not listed any items to sell'
+      redirect_to products_url
+    end
   end
   
   def recently_sold
