@@ -10,4 +10,5 @@ class Product < ApplicationRecord
   validates :artist, length: { in: 1..50 }
   validates :price, numericality: { in: 1..50000 }
   validates :vinyl_weight, numericality: { in: 120..220 }
+  validates :catalog_number, length: { in: 4..12 }
 end
