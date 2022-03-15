@@ -6,11 +6,14 @@
 </p>
 
 <% @category_products.each do |product| %>
+  <%# Only displaying albums that have not been sold %>
+  <% if product.sold_status == false %>
   <div>
     <h2><%= product.name %></h2>
     <p>$<%= product.price %></p>
     <%= link_to "Show Album", product_path(product.id) %>
   </div>
+  <% end %>
 <% end %>
 
 <% if user_signed_in? and current_user.admin? %>
