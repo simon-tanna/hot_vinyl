@@ -39,7 +39,7 @@
   <div class="mb-3">
     <%= form.label :vinyl_weight %>
     <br>
-    <%= form.number_field :vinyl_weight %>
+    <%= form.number_field :vinyl_weight, in: 120..220, step: 5 %>
   </div>
 
   <div class="mb-3">

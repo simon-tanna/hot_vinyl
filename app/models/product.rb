@@ -5,6 +5,8 @@ class Product < ApplicationRecord
   has_one :order
   has_one :review
   # Ensures fields essential to the operation of the application are present
-  validates :name, :artist, :price, presence: true
+  validates :name, :artist, :price, :vinyl_weight, :catalog_number, presence: true
+  validates :vinyl_weight, numericality: { in: 120..220 }
+
 
 end
