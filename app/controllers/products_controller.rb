@@ -34,6 +34,11 @@ class ProductsController < ApplicationController
   
   def recently_sold
     @products = Product.order(sort_column + ' ' + sort_direction)
+    @sold_products = Product.all
+    if @sold_products.collect(&:sold_status?).length > 0
+      flash[:alert] = 'No Items Have Been Sold'
+      redirect_to categories_path
+    end
   end
   # GET /products/1 or /products/1.json
   def show
