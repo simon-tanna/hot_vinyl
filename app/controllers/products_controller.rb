@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :verified_seller, only: [:new, :create, :my_selling_products]
   before_action :owner_or_admin, only: [:edit, :update, :destroy]
-
+  # This invokes the helper method created to sort the columns in index and recently sold
   helper_method :sort_column, :sort_direction
 
   # GET /products or /products.json
@@ -25,21 +25,24 @@ class ProductsController < ApplicationController
   # GET method to show seller list of items they have listed for sale
   def my_selling_products
     @products = current_user.products
-    # This checks if the current 
+    # This checks if the current user has listed any items for sale
     if current_user.products.count < 1
       flash[:alert] = 'You have not listed any items to sell'
       redirect_to new_product_path
     end
   end
   
+  # GET method to show all users items that are recently sold in the application
   def recently_sold
     @products = Product.order(sort_column + ' ' + sort_direction)
+    # This checks if there have been any items sold on the site
     @sold_products = Product.all
     if @sold_products.collect(&:sold_status?).length > 0
       flash[:alert] = 'No Items Have Been Sold'
       redirect_to categories_path
     end
   end
+
   # GET /products/1 or /products/1.json
   def show
   end
@@ -98,10 +101,6 @@ class ProductsController < ApplicationController
       @product = Product.find(params[:id])
     end
 
-    # def find_review
-    #   @review = Review.find(params[:id])
-    # end
-
     # Only allow a list of trusted parameters through.
     def product_params
       params.require(:product).permit(:name, :artist, :price, :category_id, :vinyl_weight, :catalog_number, :condition, :user_id, :picture)
@@ -121,6 +120,7 @@ class ProductsController < ApplicationController
       end
     end
 
+    # These methods define the parameters used by the sorting helper method
     def sort_column
       Product.column_names.include?(params[:sort]) ? params[:sort] : 'name'
     end
