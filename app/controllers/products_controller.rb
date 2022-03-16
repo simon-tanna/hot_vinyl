@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all
+    @products = Product.order(sort_column + ' ' + sort_direction)
   end
 
   # GET search method for search function in navbar
