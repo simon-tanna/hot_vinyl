@@ -10,6 +10,11 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
+    # Handles redirect if no products are present in selected category
+    if @category_products.count == 0
+      flash[:alert] = 'No Items Are Currently Listed In This Category'
+      redirect_to categories_path
+    end
   end
 
   # GET /categories/new
