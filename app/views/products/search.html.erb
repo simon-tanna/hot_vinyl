@@ -1,10 +1,33 @@
 <h1>Search Results</h1>
 
-<div class="d-flex flex-column bd-highlight mb-3">
-<% @find_album.each do |album| %>
-   <%= album.name %>
-   <%= link_to 'Show', album %>
-   <br>
-<% end %>
-<br>
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col"><%= sorts 'name' %></th>
+        <th scope="col"><%= sorts 'artist' %></th>
+        <th scope="col"><%= sorts 'price' %></th>
+        <th scope="col"><%= sorts 'user_id', 'Seller' %></th>
+        <th scope="col">Product Image</th>
+        <th scope="col">View Product</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @find_album.each do |album| %>
+      <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
+        <% if album.sold_status == false %>
+          <tr>
+            <td><%= album.name %></td>
+            <td><%= album.artist %></td>
+            <td>$<%= album.price %>0</td>
+            <td><%= link_to album.user.username, album.user %></td>
+            <td><%= image_tag album.picture if album.picture.attached? %></td>
+            <td><%= link_to 'Show', album %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 </div>
