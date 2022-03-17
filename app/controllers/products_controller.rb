@@ -73,9 +73,11 @@ class ProductsController < ApplicationController
   end
 
   # PATCH/PUT /products/1 or /products/1.json
+  # Allowed params have excluded user_id from being updated.
+  # When testing, it was found that the user_id was changed to an editing admin user_id when admin edited a product
   def update
     respond_to do |format|
-      if @product.update(product_params)
+      if @product.update(params.require(:product).permit(:name, :artist, :price, :category_id, :vinyl_weight, :catalog_number, :condition, :picture))
         format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
         format.json { render :show, status: :ok, location: @product }
       else
