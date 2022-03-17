@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'orders/index', to: 'orders#index'
   # route for the search function
   get 'search', to: 'products#search'
+  get 'users/:id', to: 'users#profile_view', as: 'profie_view'
   # get 'orders/new', to: 'orders#new'
   # post 'orders/create', to:'orders#create'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
