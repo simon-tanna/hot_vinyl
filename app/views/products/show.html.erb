@@ -44,8 +44,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @product.user.username %>
+  <strong>Seller:</strong>
+  <%= link_to @product.user.username, @product.user %>
 </p>
 
 <%# Will display review for product if review is present %>
