@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
-
+  before_action :category_has_products, only: [:destroy]
   # GET /categories or /categories.json
   def index
     @categories = Category.all
@@ -79,6 +79,13 @@ class CategoriesController < ApplicationController
     def is_admin
       if !current_user.admin?
         redirect_to categories_url, notice: "Must be an administrator to perform that action!"
+      end
+    end
+
+    # Checks if category has active products listed before deletion
+    def category_has_products
+      if @category.products.count > 0
+        redirect_to categories_url, alert: "This category has active listings. You can only delete an empty category"
       end
     end
 end
