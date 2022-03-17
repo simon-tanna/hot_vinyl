@@ -38,7 +38,8 @@ class ProductsController < ApplicationController
     @products = Product.order(sort_column + ' ' + sort_direction)
     # This checks if there have been any items sold on the site
     @sold_products = Product.all
-    if @sold_products.collect(&:sold_status?).length < 0
+    # Displays alert and redirects if no items have been sold 
+    if @sold_products.where(sold_status: true).count < 1
       flash[:alert] = 'No Items Have Been Sold'
       redirect_to categories_path
     end
@@ -104,7 +105,7 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :artist, :price, :category_id, :vinyl_weight, :catalog_number, :condition, :user_id, :picture)
+      params.require(:product).permit(:name, :artist, :price, :category_id, :vinyl_weight, :catalog_number, :condition, :sold_status, :user_id, :picture)
     end
 
     # verifying user is a seller before listing new product for sale
