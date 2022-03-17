@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user_profile
+
   # Renders user profile on page
-  def profile_view
+  def show
   end
 
   private

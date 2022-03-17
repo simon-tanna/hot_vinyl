@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :reviews
   end
   devise_for :users
+  resources :users
   root to: "categories#index"
   # routes for seller's listed items and user placed orders
   get '/my_selling_products', to: 'products#my_selling_products', as: 'my_selling_products'

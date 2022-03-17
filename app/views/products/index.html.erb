@@ -23,7 +23,7 @@
             <td><%= product.name %></td>
             <td><%= product.artist %></td>
             <td>$<%= product.price %>0</td>
-            <td><%= link_to 'product.user.username' %></td>
+            <td><%= link_to product.user.username, product.user %></td>
             <td><%= image_tag product.picture if product.picture.attached? %></td>
             <td><%= link_to 'Show', product %></td>
           </tr>
