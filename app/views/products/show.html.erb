@@ -51,14 +51,14 @@
     <%= render @product.review %>
   </p>
 <% end %>
-<%# Checking if user is signed in and the user is either the selling owner or admin %>
-<% if user_signed_in? and (current_user.admin? or current_user.id==@product.user_id) %>
-  <%= link_to 'Edit', edit_product_path(@product) %>
-  <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% else %>
+<%# Checking if user is signed in and the user is either the selling owner or admin and if the item has not been sold %>
+<% if @product.sold_status? == false %>
+  <% if user_signed_in? and (current_user.admin? or current_user.id==@product.user_id) %>
+    <%= link_to 'Edit', edit_product_path(@product) %>
+    <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%# If user is not the seller, they will have the option to buy the item %>
 <%# Devise will handle authentication of this. If user is not signed in they will have an error message and redirect to signin page %>
-  <% if !@product.sold_status %>
+<% else %>
     <%= link_to 'Buy Me Now!', new_product_order_path(@product.id) %>
   <% end %>
 <% end %>

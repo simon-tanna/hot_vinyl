@@ -3,6 +3,7 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :verified_seller, only: [:new, :create, :my_selling_products]
   before_action :owner_or_admin, only: [:edit, :update, :destroy]
+  before_action :sold_item, only: [:edit, :update, :destroy]
   # This invokes the helper method created to sort the columns in index and recently sold
   helper_method :sort_column, :sort_direction
 
@@ -117,6 +118,13 @@ class ProductsController < ApplicationController
     def owner_or_admin
       if !current_user.admin? and current_user.id!=@product.user_id
         redirect_to products_url, notice: "You must be the selling user or have administrative access to perform that action"
+      end
+    end
+
+    # Stops selling user from editing or deleting item if it has been sold
+    def sold_item
+      if @product.sold_status? == true
+        redirect_to product_path, alert: "This item has been sold. You can no longer edit or remove this product"
       end
     end
 
