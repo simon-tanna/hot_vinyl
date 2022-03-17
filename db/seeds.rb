@@ -42,7 +42,35 @@ Category.create([{
     }])
 
 
-u1 = User.create(email: 'user@test.com', password: '123123', password_confirmation: '123123', username: 'r_waters', seller: true)
+User.create([{
+        email: 'user1@test.com',
+        password: '123123',
+        password_confirmation: '123123',
+        username: 'r_waters',
+        seller: true
+    },
+    {
+        email: 'user2@test.com',
+        password: '123123',
+        password_confirmation: '123123',
+        username: 'd_gilmour',
+        seller: true
+    },
+    {
+        email: 'user3@test.com',
+        password: '123123',
+        password_confirmation: '123123',
+        username: 'f_kuti',
+        seller: false
+    },
+    {
+        email: 'user4@test.com',
+        password: '123123',
+        password_confirmation: '123123',
+        username: 'f_zappa',
+        seller: false,
+        admin: true
+    }])
 a1 = Product.create(name: 'Dark Side of the Moon', artist: 'Pink Floyd', price: 300, vinyl_weight: 180, catalog_number: 'CA 5887', condition: 'Average', category_id: 1, user_id: 1, sold_status: false)
 a2 = Product.create(name: 'Animals', artist: 'Pink Floyd', price: 300, vinyl_weight: 180, catalog_number: 'CA 5887', condition: 'Average', category_id: 1, user_id: 1, sold_status: false)
 a3 = Product.create(name: 'Powerslave', artist: 'Iron Maiden', price: 300, vinyl_weight: 180, catalog_number: 'CA 5887', condition: 'Average', category_id: 1, user_id: 1, sold_status: false)
