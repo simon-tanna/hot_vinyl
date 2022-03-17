@@ -2,33 +2,5 @@
 
 <h1>Recently sold items</h1>
 
-<div class="table-responsive">
-  <table class="table align-middle">
-    <thead>
-      <tr>
-        <th scope="col"><%= sorts 'name' %></th>
-        <th scope="col"><%= sorts 'artist' %></th>
-        <th scope="col"><%= sorts 'price' %></th>
-        <th scope="col"><%= sorts 'user_id', 'Seller' %></th>
-        <th scope="col">View Product</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @products.each do |product| %>
-      <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
-        <% if product.sold_status == true %>
-          <tr>
-            <td><%= product.name %></td>
-            <td><%= product.artist %></td>
-            <td>$<%= product.price %>0</td>
-            <td><%= product.user.username %></td>
-            <td><%= link_to 'Show', product %></td>
-          </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+<%= render 'shared/sold_products_show' %>
 <br>

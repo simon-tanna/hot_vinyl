@@ -1,0 +1,30 @@
+<div class="table-responsive">
+  <table class="table align-middle">
+    <thead>
+      <tr>
+        <th scope="col"><%= sorts 'name' %></th>
+        <th scope="col"><%= sorts 'artist' %></th>
+        <th scope="col"><%= sorts 'price' %></th>
+        <th scope="col"><%= sorts 'user_id', 'Seller' %></th>
+        <th scope="col">Product Image</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @products.each do |product| %>
+      <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
+        <% if product.sold_status == false %>
+          <tr>
+            <td><%= product.name %></td>
+            <td><%= product.artist %></td>
+            <td>$<%= product.price %>0</td>
+            <td><%= link_to product.user.username, product.user %></td>
+            <td><%= image_tag product.picture if product.picture.attached? %></td>
+            <td><%= link_to 'Show', product %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+</div>

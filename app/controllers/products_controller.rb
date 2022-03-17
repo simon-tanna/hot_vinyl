@@ -37,7 +37,7 @@ class ProductsController < ApplicationController
     @products = Product.order(sort_column + ' ' + sort_direction)
     # This checks if there have been any items sold on the site
     @sold_products = Product.all
-    if @sold_products.collect(&:sold_status?).length > 0
+    if @sold_products.collect(&:sold_status?).length < 0
       flash[:alert] = 'No Items Have Been Sold'
       redirect_to categories_path
     end
