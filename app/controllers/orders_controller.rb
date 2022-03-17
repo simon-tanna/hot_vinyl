@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
 
     if current_user.orders.count < 1
       flash[:alert] = 'You have no order history to display'
-      redirect_to products_url
+      redirect_to categories_path
     end
 
   end
