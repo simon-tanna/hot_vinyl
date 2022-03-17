@@ -10,7 +10,13 @@
   <% if product.sold_status == false %>
   <div>
     <h2><%= product.name %></h2>
-    <p>$<%= product.price %></p>
+    <h4><%= product.artist %></h4>
+    <% if product.picture.attached? %>
+      <%= image_tag product.picture, size: "250x250" %>
+    <% else %>
+      <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250") %>
+    <% end %>
+    <p>Album Price: $<%= product.price %></p>
     <%= link_to "Show Album", product_path(product.id) %>
   </div>
   <% end %>

@@ -21,7 +21,11 @@
             <td><%= product.artist %></td>
             <td>$<%= product.price %>0</td>
             <td><%= link_to product.user.username, product.user %></td>
-            <td><%= image_tag product.picture if product.picture.attached? %></td>
+            <% if product.picture.attached? %>
+              <td><%= image_tag product.picture, size: "250x250" %></td>
+            <% else %>
+              <td><%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250") %></td>
+            <% end %>
             <td><%= link_to 'Show', product %></td>
           </tr>
         <% end %>
