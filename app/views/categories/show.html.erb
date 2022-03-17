@@ -16,7 +16,7 @@
     <% else %>
       <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250") %>
     <% end %>
-    <p>Album Price: $<%= product.price %></p>
+    <p>Album Price: $<%= product.price %>0</p>
     <%= link_to "Show Album", product_path(product.id) %>
   </div>
   <% end %>
