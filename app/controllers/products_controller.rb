@@ -46,6 +46,7 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+    # @review = Review.where(product_id: @product.id)
   end
 
   # GET /products/new

@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
         @review.user_id = current_user.id
         
         if @review.save
-            redirect_to product_path(@product)
+            redirect_to product_path(@product), notice: 'You have posted a review for your purchase!'
         else
             render 'new'
         end
