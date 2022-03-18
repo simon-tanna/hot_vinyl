@@ -3,8 +3,16 @@
 
 <h2>Items Listed For Sale</h2>
 
-<%= render 'shared/selling_products_show' %>
+<% if @user.products.count < 1 %>
+    <h4><%= @user.username %> does not have any active listings</h4>
+<% else %>
+    <%= render 'shared/selling_products_show' %>
+<% end %>
+
 
 <h2>Previously Sold Items</h2>
-
-<%= render 'shared/sold_products_show' %>
+<% if @user.products.where(sold_status: true).count < 1 %>
+    <h4><%= @user.username %> has not sold any items</h4>
+<% else %>
+    <%= render 'shared/sold_products_show' %>
+<% end %>
