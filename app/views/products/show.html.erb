@@ -78,7 +78,7 @@
     <% end %>
   <% else %>
     <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
-      <%= link_to "Edit Review", edit_product_review_path(@product.id) %>
+      <%= link_to "Edit Review", edit_product_review_path(@product.id, @product.review.id) %>
     <% end %>
   <% end %>
 <% end %>
