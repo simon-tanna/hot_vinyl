@@ -4,8 +4,8 @@
 <%# Image tag to display uploaded album artwork %>
 <% if @product.picture.attached? %>
   <%= image_tag @product.picture, size: "250x250" %>
-<% else %>
-  <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250") %>
+<%# <% else %>
+  <%# <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250") %> %> %>
 <% end %>
 
 <p>
