@@ -97,6 +97,57 @@ Attach here
 
 - Github
 
+## User Stories
+
+### Guest
+
+As a guest user, I can:
+
+- View categories of product available
+- View items belonging to a particular category
+- View all products for sale
+- View products listed by a particular seller
+- View sold products and any attached review
+- Search products by album or artist name
+- Sort products by album, artist, price or seller
+- Sign up as a registered user
+- Sign in as a registered user
+
+### Buyer
+
+As a buyer, I can:
+
+- Do all things that a guest user can do
+- Buy products
+- View my order history
+- View my reciepts
+- Review products I have bought
+- Edit reviews of products I have bought
+- Edit my user profile
+
+### Seller
+
+As a seller, I can:
+
+- Do all things a guest and buyer can do
+- List products to sell
+- Attach an image to a product I have listed to sell
+- Edit a product that I have listed to sell
+- Delete a product that I have listed to sell if it has not been sold
+- View my active listings
+
+### Administrator
+
+As an admin, I can:
+
+- Do all things a guest, buyer and seller can do
+- Edit or delete products if they have not been sold
+- Edit or delete product reviews
+- Create or edit categories
+- Delete categories if no listed products belong to that category
+
+
+
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
 Brett Jordan photographer
