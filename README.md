@@ -1,10 +1,10 @@
 # Hot Vinyl Records
 
-### Hot Vinyl Deployed Website
+## Hot Vinyl Deployed Website
 
 [Hot Vinyl Records link](https://mysterious-springs-75901.herokuapp.com/)
 
-### Hot Vinyl Github Repository
+## Hot Vinyl Github Repository
 
 [Hot Vinyl Records Git Hub link](https://github.com/simon-tanna/hot_vinyl_records)
 
@@ -164,27 +164,27 @@ The view level of data abstraction tells the application what data can be access
 
 ##### Guest User
 
-The guest user is authorised to view categories, products and user profiles. Access to any other element of the application is denied to a guest user through use of the Devise helper `before_action :authenticate_user!` in a controller. For example, the following code is implemented in /controllers/products_controller.rb 
+The guest user is authorised to view categories, products and user profiles. Access to any other element of the application is denied to a guest user through use of the Devise helper `before_action :authenticate_user!` in a controller. For example, the following code is implemented in /controllers/products_controller.rb
 
-`before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]` 
+`before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]`
 
 This tells the application to authenticate that a user is signed in if they are wanting to create, edit or delete a product, thereby allowing a guest user to access the data in the index and show views without authentication. Before actions are also used in the following controllers:
 
-* Categories
+- Categories
 
     `before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]`
 
-* Reviews
+- Reviews
 
     `before_action :authenticate_user!, only: [:new, :edit, :create, :update]`
 
-* Orders
+- Orders
 
     `before_action :authenticate_user!` (This action only allows a logged in user to access the ordering system)
 
 ##### Buyer Only User
 
-A user who chooses not to register as a seller will not be able to access certain parts of the site which are relevant only to sellers. For example, if a non-seller user attempted to create a new product, the following private method would be implemented in the /controllers/products_controller.rb 
+A user who chooses not to register as a seller will not be able to access certain parts of the site which are relevant only to sellers. For example, if a non-seller user attempted to create a new product, the following private method would be implemented in the /controllers/products_controller.rb
 
     def verified_seller
       if !user_signed_in? or !current_user.seller?
@@ -206,8 +206,6 @@ Data abstraction also occurs without using a before_action in a controller. For 
         end
 
     end
-
-
 
 ##### Selling Users and Admin
 
@@ -237,6 +235,26 @@ This code will only allow the product seller or a site admin to perform these ac
                 <%= link_to 'Buy Me Now!', new_product_order_path(@product.id) %>
             <% end %>
         <% end %>
+
+## Third-Party Services
+
+### Cloud Storage
+
+#### Amazon S3
+
+Hot Vinyl Records uses the Amazon S3 service to store and retrieve images uploaded by the user for their selling items. When an item is removed from the site, the associated image is removed from the S3 cloud to ensure efficient use of storage.
+
+### Payment System
+
+#### Stripe
+
+Payments between a buyer and Hot Vinyl Records are handled by the Stripe payment service. Stripe fetches the buyer and product information to create a new order and allows payment via credit card.
+
+### Deployment
+
+#### Heroku
+
+The Hot Vinyl Records application is deployed and hosted via the cloud based platform Heroku. It uploads, compiles and interprets the source code to display the application as intended.
 
 
 
