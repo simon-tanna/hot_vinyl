@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container">
+  <div class="container-fluid">
     <a><%= link_to 'Hot Vinyl Records Home', categories_path, class: "navbar-brand" %></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
           <%= link_to "Hot Vinyl Store", products_path, class: "nav-link" %>
         </li>
@@ -17,36 +17,42 @@
                 <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
             </li>
         <% else %>
-            <% if current_user.seller %>
-                <li class="nav-item">
-                    <%= link_to 'Sell Vinyl', new_product_path, class: "nav-link" %>
-                </li>
-                <li class="nav-item">
-                    <%= link_to 'My Listed Items', my_selling_products_path, class: "nav-link" %>
-                </li>
-            <% end %>
             <li class="nav-item">
               <%= link_to "Recently Sold Vinyl", recently_sold_path, class: "nav-link" %>
             </li>
-            <li class="nav-item">
-                <%= link_to "My Orders", orders_index_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-                <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
-            </li>
+            <% if current_user.seller %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                My Selling Options
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a><%= link_to 'Sell Vinyl', new_product_path, class: "dropdown-item" %></a></li>
+                  <li><a><%= link_to 'My Listed Items', my_selling_products_path, class: "dropdown-item" %></a></li>
+                </ul>
+              </li>
+            <% end %>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                My Profile
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a><%= link_to "My Orders", orders_index_path, class: "dropdown-item" %></a></li>
+                  <li><a><%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %></a></li>
+                </ul>
+              </li>
             <li class="nav-item">
                 <%= link_to "Sign Out", destroy_user_session_path, method: 'delete', class: "nav-link" %>
             </li>
         <% end %>
       </ul>
       <%# This is the code for search bar %>
+      
       <%= form_tag(search_path, :method => "get") do %> 
-      <%# <form class="d-flex"> %>
+      <form class="d-flex">
         <%= search_field_tag :search, params[:search], placeholder: "Search for Album or Artist", class: "form-control me-2" %>
-        <%# <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> %>
-        <%= button_tag "Search" %>
-        <%# <button class="btn btn-outline-success" type="submit">Search</button> %>
-      <%# </form> %>
+        <%= button_tag "Search", class: "btn btn-outline-success" %>
+
+      </form>
       <% end %>
     </div>
   </div>
