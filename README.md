@@ -146,8 +146,52 @@ As an admin, I can:
 - Create or edit categories
 - Delete categories if no listed products belong to that category
 
+## High Level Components
 
+### Data Abstraction
 
+The process of data abstraction refers to the hiding of details not relevant to a particular user (AfterAcademy 2019). It is divided into three levels being:
+
+1. View Level
+1. Conceptual Level
+1. Physical Level
+
+As the view level is the highest of these abstractions, a description of how this is implemented within the application is discussed below.
+
+#### View Level
+
+The view level of data abstraction tells the application what data can be accessed by a user and how they access it. Hot Vinyl Records provides difference levels of authorisation to a user in order to ensure the integrity of the application and it's data.
+
+##### Guest User
+
+The guest user is authorised to view categories, products and user profiles. Access to any other element of the application is denied to a guest user through use of the Devise helper `before_action :authenticate_user!` in a controller. For example, the following code is implemented in /controllers/products_controller.rb 
+
+`before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]` 
+
+This tells the application to authenticate that a user is signed in if they are wanting to create, edit or delete a product, thereby allowing a guest user to access the data in the index and show views without authentication. Before actions are also used in the following controllers:
+
+* Categories
+
+    `before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]`
+
+* Reviews
+
+    `before_action :authenticate_user!, only: [:new, :edit, :create, :update]`
+
+* Orders
+
+    `before_action :authenticate_user!` (This action only allows a logged in user to access the ordering system)
+
+##### Buyer Only User
+
+A user who chooses not to b
+    
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
 Brett Jordan photographer
+
+### References
+AfterAcademy 2019, What is Data Abstraction in DBMS and what are its three levels?, Afteracademy.com, viewed 19 March 2022, <https://afteracademy.com/blog/what-is-data-abstraction-in-dbms-and-what-are-its-three-levels>.
+
+‌
+‌
