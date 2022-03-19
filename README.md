@@ -42,58 +42,62 @@ If a user wishes to buy a particular item from the store, there is a "buy me now
 
 Site administrators are able to edit and delete listings or reviews if they do not meet the standards required by the site. They are also able to create, edit or delete categories as genres evolve over time.
 
-### Sitemap
+## Sitemap
+
+![Hot Vinyl Records Sitemap](/app/assets/images/markdown_resource/vinyl_marketplace_sitemap.png)
+
+## Wireframes
 
 Attach here
 
-### Screenshots
+## Screenshots
 
 Attach here
 
-### Tech Stack
+## Tech Stack
 
-#### Application Framework
+### Application Framework
 
 - Ruby on Rails
 
-#### Languages
+### Languages
 
 - Ruby
 - HTML5
 - CSS3
 - SCSS
 
-#### Front End Framework
+### Front End Framework
 
 - Bootstrap
 - jQuery
 - popper.js
 
-#### User Management and Authentication
+### User Management and Authentication
 
 - Devise
 
-#### Payment Services
+### Payment Services
 
 - Stripe
 
-#### Cloud Storage
+### Cloud Storage
 
 - Amazon S3
 
-#### Database
+### Database
 
 - PostgreSQL
 
-#### Deployment
+### Deployment
 
 - Heroku
 
-#### Project Management
+### Project Management
 
 - Trello
 
-#### Version Control
+### Version Control
 
 - Github
 
@@ -258,7 +262,7 @@ The Hot Vinyl Records application is deployed and hosted via the cloud based pla
 
 ## Models
 
-Hot Vinyl Records features models relevant to the running of the application with associations explicitly declared to define the type of relationships they have to each other.
+Hot Vinyl Records features models relevant to the running of the application with active record associations explicitly declared to define the type of relationships they have to each other.
 
 ### User Model
 
@@ -296,7 +300,39 @@ Hot Vinyl Records features models relevant to the running of the application wit
 
     This indicates that an product will have an association with one review
 
-###
+### Order Model
+
+- `belongs_to :user`
+
+    Declares that an order belongs to an instance of one user
+
+- `belongs_to :product`
+
+    Declares that an order belongs to an instance of one product
+
+### Category Model
+
+- `has_many :products`
+
+    This allows an instance of a category to contain many products
+
+### Review Model
+
+- `belongs_to :product`
+
+    Declares that a review belongs to an instance of one product
+
+- `belongs_to :user`
+
+    Declares that a review belongs to an instance of one user
+
+## Entity Relationship Diagram
+
+![ERD for Hot Vinyl Records](/app/assets/images/markdown_resource/vinyl_marketplace_erd.png)
+
+## Database Relations
+
+
 
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
