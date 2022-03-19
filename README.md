@@ -24,6 +24,10 @@ Hot Vinyl Records recognises that in the current pandemic environment that "digg
 
 Hot Vinyl Records is a two-sided marketplace application in which users can view, buy, sell and review products. It seeks to provide a hassle-free purchasing system where the user can be confident in the integrity of the site, product and sellers.
 
+### Target Audience
+
+Hot Vinyl Records is designed to attract record collectors, enthusiasts and music lovers from all parts of Australia. It also provides users looking to start a quality record collection of their own a place where they can feel confident of the quality and value of product they are purchasing.
+
 ### Functionality
 
 The Hot Vinyl Records site allows users to interact with features within the application depending on their registration and admin status.
@@ -39,9 +43,59 @@ If a user wishes to buy a particular item from the store, there is a "buy me now
 Site administrators are able to edit and delete listings or reviews if they do not meet the standards required by the site. They are also able to create, edit or delete categories as genres evolve over time.
 
 ### Sitemap
+
 Attach here
 
 ### Screenshots
+
+Attach here
+
+### Tech Stack
+
+#### Application Framework
+
+- Ruby on Rails
+
+#### Languages
+
+- Ruby
+- HTML5
+- CSS3
+- SCSS
+
+#### Front End Framework
+
+- Bootstrap
+- jQuery
+- popper.js
+
+#### User Management and Authentication
+
+- Devise
+
+#### Payment Services
+
+- Stripe
+
+#### Cloud Storage
+
+- Amazon S3
+
+#### Database
+
+- PostgreSQL
+
+#### Deployment
+
+- Heroku
+
+#### Project Management
+
+- Trello
+
+#### Version Control
+
+- Github
 
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
