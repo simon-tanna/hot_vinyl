@@ -24,13 +24,13 @@ class OrdersController < ApplicationController
 
   # POST for orders with payment using stripe
   def create
-
+    # Creates stripe customer
     customer = Stripe::Customer.create(
       email: params[:stripeEmail],
       source: params[:stripeToken]
     )
 
-    
+    # Creates stripe charge for item
     charge = Stripe::Charge.create(
       customer: customer.id,
       amount: @amount,
@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
       currency: 'aud'
     )
 
-
+    # Creates order, updates product sold status and redirects to my orders view
     @order = Order.create(product: @product, user: current_user, receipt_url: charge.receipt_url)
     @product.update(sold_status: true)
     redirect_to orders_index_path, notice: "Congratulatons! You have just purchased #{@product.name}!"

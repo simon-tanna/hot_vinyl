@@ -6,7 +6,6 @@ class CategoriesController < ApplicationController
   before_action :all_categories, only: [:index, :category_list]
   # GET /categories or /categories.json
   def index
-
   end
 
   # GET /categories/1 or /categories/1.json
@@ -67,7 +66,6 @@ class CategoriesController < ApplicationController
 
   # Displays full category list
   def category_list
-
   end
 
   private
