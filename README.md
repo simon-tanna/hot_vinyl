@@ -276,7 +276,27 @@ Hot Vinyl Records features models relevant to the running of the application wit
 
 ### Product Model
 
-- ``
+- `belongs_to :user`
+
+    Declares that a product belongs to an instance of one user
+
+- `belongs_to :category`
+
+    Declares that a product belongs to an instance of one category
+
+- `has_one_attached :picture`
+
+    Declares that a product can have one picture attached to it's record.
+
+- `has_one :order`
+
+    This indicates that an product will have an association with one order
+
+- `has_one :review`
+
+    This indicates that an product will have an association with one review
+
+###
 
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
