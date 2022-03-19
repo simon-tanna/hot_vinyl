@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user
-  belongs_to :category, optional: true
+  belongs_to :category
   has_one_attached :picture
   has_one :order
   has_one :review
@@ -11,4 +11,5 @@ class Product < ApplicationRecord
   validates :price, numericality: { in: 1..50000 }
   validates :vinyl_weight, numericality: { in: 120..220 }
   validates :catalog_number, length: { in: 4..12 }
+  validates :category, presence: true
 end

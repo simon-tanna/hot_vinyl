@@ -256,7 +256,27 @@ Payments between a buyer and Hot Vinyl Records are handled by the Stripe payment
 
 The Hot Vinyl Records application is deployed and hosted via the cloud based platform Heroku. It uploads, compiles and interprets the source code to display the application as intended.
 
+## Models
 
+Hot Vinyl Records features models relevant to the running of the application with associations explicitly declared to define the type of relationships they have to each other.
+
+### User Model
+
+- `has_many :products`
+
+    This allows a user to list multiple products for sale.
+
+- `has_many :orders`
+
+    This allows a user to place many orders
+
+- `has_many :reviews`
+
+    This allow a user to write many reviews
+
+### Product Model
+
+- ``
 
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
