@@ -184,8 +184,46 @@ This tells the application to authenticate that a user is signed in if they are 
 
 ##### Buyer Only User
 
-A user who chooses not to b
+A user who chooses not to register as a seller will not be able to access certain parts of the site which are relevant only to sellers. For example, if a non-seller user attempted to create a new product, the following private method would be implemented in the /controllers/products_controller.rb 
+
+    def verified_seller
+      if !user_signed_in? or !current_user.seller?
+        redirect_to products_url, notice: "You must be registered as a seller to list an item"
+      end
+    end
+
+`before_action :verified_seller, only: [:new, :create, :my_selling_products]` is the invoked at the top of the controller.
+
+##### Selling Users and Admin
+
+A Hot Vinyl Records seller is able to create, edit and delete products but must be verified as the owner of a particular item. View level abstraction for a seller is achieved through before_action commands in the controllers and in the views via embedded ruby code. For example, a seller is prevented from editing or deleting a product from the site via the following code contained within /controllers/products_controller.rb
+
+`before_action :owner_or_admin, only: [:edit, :update, :destroy]`
+
+    def owner_or_admin
+      if !current_user.admin? and current_user.id!=@product.user_id
+        redirect_to products_url, notice: "You must be the selling user or have administrative access to perform that action"
+      end
+    end
+
+This code will only allow the product seller or a site admin to perform these actions. In order to fully ensure integrity of the site, these options are removed as links from the product show page if the logged in user is not the seller of that product via the following embedded ruby code.
+
+    <%# Checking if user is signed in and the user is either the selling owner or admin and if the item has not been sold %>
+
+        <% if @product.sold_status? == false %>
+            <% if user_signed_in? and (current_user.admin? or current_user.id==@product.user_id) %>
+                <%= link_to 'Edit', edit_product_path(@product) %>
+                <%= link_to 'Destroy', @product, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+    <%# If user is not the seller, they will have the option to buy the item %>
+    <%# Devise will handle authentication of this. If user is not signed in they will have an error message and redirect to signin page %>
+
+            <% else %>
+                <%= link_to 'Buy Me Now!', new_product_order_path(@product.id) %>
+            <% end %>
+        <% end %>
     
+
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
 Brett Jordan photographer
