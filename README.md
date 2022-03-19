@@ -194,6 +194,21 @@ A user who chooses not to register as a seller will not be able to access certai
 
 `before_action :verified_seller, only: [:new, :create, :my_selling_products]` is the invoked at the top of the controller.
 
+Data abstraction also occurs without using a before_action in a controller. For example, upon buying a product, the user will have access to their order history and can only view this if they are a current signed in user who has placed at least one order. This is invoked via the following method in /controllers/orders_controller.rb
+
+    def index
+
+        @orders = current_user.orders
+
+        if current_user.orders.count < 1
+            flash[:alert] = 'You have no order history to display'
+            redirect_to categories_path
+        end
+
+    end
+
+
+
 ##### Selling Users and Admin
 
 A Hot Vinyl Records seller is able to create, edit and delete products but must be verified as the owner of a particular item. View level abstraction for a seller is achieved through before_action commands in the controllers and in the views via embedded ruby code. For example, a seller is prevented from editing or deleting a product from the site via the following code contained within /controllers/products_controller.rb
@@ -222,7 +237,8 @@ This code will only allow the product seller or a site admin to perform these ac
                 <%= link_to 'Buy Me Now!', new_product_order_path(@product.id) %>
             <% end %>
         <% end %>
-    
+
+
 
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
