@@ -293,6 +293,14 @@ Product.create([{
         sold_status: false
     }])
 
+    Product.all.each do |products|
+        products.picture.attach(io: File.open(Rails.root.join('app/assets/images/placeholder_record.jpg')),
+        filename: 'placeholder_record.jpg')
+    end
+
+
+    
+
     p "Created #{Category.count} categories"
     p "Created #{User.count} users"
     p "Created #{Product.count} products"
