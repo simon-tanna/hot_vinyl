@@ -3,9 +3,10 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :is_admin, only: [:new, :create, :edit, :update, :destroy]
   before_action :category_has_products, only: [:destroy]
+  before_action :all_categories, only: [:index, :category_list]
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+
   end
 
   # GET /categories/1 or /categories/1.json
@@ -64,8 +65,9 @@ class CategoriesController < ApplicationController
     end
   end
 
+  # Displays full category list
   def category_list
-    @categories = Category.all
+
   end
 
   private
@@ -91,5 +93,10 @@ class CategoriesController < ApplicationController
       if @category.products.count > 0
         redirect_to categories_url, alert: "This category has active listings. You can only delete an empty category"
       end
+    end
+
+    # Before action to display categories in index and category list
+    def all_categories
+      @categories = Category.all
     end
 end
