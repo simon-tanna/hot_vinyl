@@ -6,7 +6,7 @@
         <th scope="col"><%= sorts 'artist' %></th>
         <th scope="col"><%= sorts 'price' %></th>
         <th scope="col"><%= sorts 'user_id', 'Seller' %></th>
-        <th scope="col">Product Image</th>
+        <th scope="col" class="d-none d-md-block"></th>
         <th scope="col">View Product</th>
         <th colspan="3"></th>
       </tr>
@@ -22,11 +22,11 @@
             <td>$<%= product.price %>0</td>
             <td><%= link_to product.user.username, product.user %></td>
             <% if product.picture.attached? %>
-              <td class="w-25">
+              <td class="d-none d-md-block">
                 <%= image_tag product.picture, size: "250x250", class: "img-fluid" %>
               </td>
             <% else %>
-              <td class="w-25">
+              <td class="d-none d-md-block">
                 <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250", class: "img-fluid") %>
               </td>
             <% end %>
