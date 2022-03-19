@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   devise_for :users
   resources :users
   root to: "categories#index"
+
+  get '/category_list', to:'categories#category_list', as: 'category_list'
   # routes for seller's listed items and user placed orders
   get '/my_selling_products', to: 'products#my_selling_products', as: 'my_selling_products'
   get '/recently_sold', to: 'products#recently_sold', as: 'recently_sold'

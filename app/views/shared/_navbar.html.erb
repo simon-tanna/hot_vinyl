@@ -6,8 +6,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "Hot Vinyl Store", products_path, class: "nav-link" %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Hot Vinyl Store
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a><%= link_to 'View Categories', category_list_path, class: "dropdown-item" %></a></li>
+            <li><a><%= link_to 'View All Vinyl', products_path, class: "dropdown-item" %></a></li>
+            <li><a><%= link_to 'Recently Sold Vinyl', recently_sold_path, class: "dropdown-item" %></a></li>
+          </ul>
         </li>
         <% if !user_signed_in? %>
             <li class="nav-item">
@@ -17,13 +24,10 @@
                 <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
             </li>
         <% else %>
-            <li class="nav-item">
-              <%= link_to "Recently Sold Vinyl", recently_sold_path, class: "nav-link" %>
-            </li>
             <% if current_user.seller %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                My Selling Options
+                  My Selling Options
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a><%= link_to 'Sell Vinyl', new_product_path, class: "dropdown-item" %></a></li>
@@ -33,7 +37,7 @@
             <% end %>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                My Profile
+                  My Profile
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li><a><%= link_to "My Orders", orders_index_path, class: "dropdown-item" %></a></li>
