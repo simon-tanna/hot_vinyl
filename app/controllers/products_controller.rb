@@ -4,12 +4,12 @@ class ProductsController < ApplicationController
   before_action :verified_seller, only: [:new, :create, :my_selling_products]
   before_action :owner_or_admin, only: [:edit, :update, :destroy]
   before_action :sold_item, only: [:edit, :update, :destroy]
+  before_action :product_sort, only: [:index, :recently_sold]
   # This invokes the helper method created to sort the columns in index and recently sold
   helper_method :sort_column, :sort_direction
 
   # GET /products or /products.json
   def index
-    @products = Product.order(sort_column + ' ' + sort_direction)
   end
 
   # GET search method for search function in navbar
@@ -35,7 +35,6 @@ class ProductsController < ApplicationController
   
   # GET method to show all users items that are recently sold in the application
   def recently_sold
-    @products = Product.order(sort_column + ' ' + sort_direction)
     # This checks if there have been any items sold on the site
     @sold_products = Product.all
     if @sold_products.where(sold_status: true).count < 1
@@ -46,7 +45,6 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
-    # @review = Review.where(product_id: @product.id)
   end
 
   # GET /products/new
@@ -138,6 +136,11 @@ class ProductsController < ApplicationController
 
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : 'asc'
+    end
+
+    # Before action to invoke sort on index and recently sold
+    def product_sort
+      @products = Product.order(sort_column + ' ' + sort_direction)
     end
 
 end
