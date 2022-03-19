@@ -1,37 +1,27 @@
-<div class="table">
-  <table class="table align-middle">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Artist</th>
-        <th scope="col">Price</th>
-        <th scope="col">Seller</th>
-        <th scope="col" class="d-none d-md-block"></th>
-        <th scope="col">View Product</th>
-        <th colspan="6"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @products.each do |product| %>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <% @products.each do |product| %>
       <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
         <% if product.sold_status == false %>
-          <tr>
-            <td><%= product.name %></td>
-            <td><%= product.artist %></td>
-            <td>$<%= product.price %>0</td>
-            <td><%= link_to product.user.username, product.user %></td>
-            <% if product.picture.attached? %>
-              <td class="d-none d-md-block">
-                <%= image_tag product.picture, size: "250x250", class: "img-fluid" %>
-              </td>
-            <% else %>
-              <td class="d-none d-md-block"><%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250", class: "img-fluid") %></td>
-            <% end %>
-            <td><%= link_to 'Show', product %></td>
-          </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+        <div class="col">
+            <div class="card">
+                <% if product.picture.attached? %>
+                    <%= image_tag product.picture, class: "img-fluid" %>
+                <% else %>
+                    <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", class: "img-fluid") %>
+                <% end %>
+            <div class="card-body">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="card-text"><%= product.artist %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: $<%= product.price %>0</li>
+                <li class="list-group-item">Seller: <%= link_to product.user.username, product.user %></li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link"><%= link_to 'Show', product %></a>
+            </div>
+            </div>
+        </div>
+        <% end %>  
+    <% end %>
 </div>
