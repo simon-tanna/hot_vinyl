@@ -74,7 +74,29 @@ Site administrators are able to edit and delete listings or reviews if they do n
 
 ## Screenshots
 
+### Home Page
 
+![Hot Vinyl Records Home](/app/assets/images/markdown_resource/screens/home.jpg)
+
+### Sign Up Page
+
+![Hot Vinyl Records Sign Up](/app/assets/images/markdown_resource/screens/signup_screen.jpg)
+
+### Sign In Page
+
+![Hot Vinyl Records Sign In](/app/assets/images/markdown_resource/screens/signin_screen.jpg)
+
+### Category View
+
+![Hot Vinyl Records Category View](/app/assets/images/markdown_resource/screens/category_screen.jpg)
+
+### Product View
+
+![Hot Vinyl Records Product View](/app/assets/images/markdown_resource/screens/product_screen.jpg)
+
+### Profile View
+
+![Hot Vinyl Records Profile View](/app/assets/images/markdown_resource/screens/profile_screen.jpg)
 
 ## Tech Stack
 
