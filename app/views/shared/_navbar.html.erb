@@ -10,12 +10,14 @@
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Hot Vinyl Store
           </a>
+          <%# Links to display if guest user %>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li><a><%= link_to 'View Categories', category_list_path, class: "dropdown-item" %></a></li>
             <li><a><%= link_to 'View All Vinyl', products_path, class: "dropdown-item" %></a></li>
             <li><a><%= link_to 'Recently Sold Vinyl', recently_sold_path, class: "dropdown-item" %></a></li>
           </ul>
         </li>
+        <%# Links to display if not signed in %>
         <% if !user_signed_in? %>
             <li class="nav-item">
                 <%= link_to "Sign In", new_user_session_path , class: "nav-link" %>
@@ -24,6 +26,7 @@
                 <%= link_to "Sign Up", new_user_registration_path, class: "nav-link" %>
             </li>
         <% else %>
+            <%# Links to display if current user is a seller %>
             <% if current_user.seller %>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
