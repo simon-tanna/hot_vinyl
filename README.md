@@ -546,6 +546,16 @@ Each type of task would be allocated to the appropriate list and set a coloured 
 
 High priority tasks would be completed first.
 
+### Information For Educators
+
+The following versions were used in development
+
+- Rails 6.1.4.7
+- Node v16.13.2
+- ruby 2.7.5p203
+
+To test admin permissions, login as user4@test.com password: 123123
+
 ### Credits
 
 [Placeholder album image](https://unsplash.com/photos/hrUhyFq6u-A) - Brett Jordan photographer
