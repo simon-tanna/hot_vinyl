@@ -69,27 +69,25 @@
   <% else %>
     <%= link_to 'Buy Me Now!', new_product_order_path(@product.id) %>
   <% end %>
-<% end %>
-
-<% if @product.sold_status == true %>
-  <p>
-    <strong>Product Sold Status:</strong>
-    <%= @product.sold_status %>
-  </p>
-  <% if !@product.review %>
-    <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
-      <%= link_to "Add Review", new_product_review_path(@product.id) %>
-    <% end %>
-  <% else %>
-    <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
-      <%= link_to "Edit Review", edit_product_review_path(@product.id, @product.review.id) %>
+<% else %>
+    <p>
+      <strong>Product Sold Status: SOLD</strong>
+    </p>
+    <% if !@product.review %>
+      <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
+        <%= link_to "Add Review", new_product_review_path(@product.id) %>
+      <% end %>
+    <% else %>
+      <% if user_signed_in? and (current_user.admin? or current_user.id==@product.order.user_id) %>
+        <%= link_to "Edit Review", edit_product_review_path(@product.id, @product.review.id) %>
+      <% end %>
     <% end %>
   <% end %>
-<% end %>
 
-<% if @product.sold_status == true %>  
-  <%= link_to 'Back', recently_sold_path %>
-<% else %>
-  <%= link_to 'Back', products_path %>
-<% end %>
+  <% if @product.sold_status == true %>  
+    <%= link_to 'Back', recently_sold_path %>
+  <% else %>
+    <%= link_to 'Back', products_path %>
+  <% end %>
+
 </div>
