@@ -18,8 +18,10 @@
       <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
       <% end %>
-      <%= render 'shared/navbar' %>
+      <%= image_tag 'banner', class: 'img-fluid' %>
+      <%= render 'shared/navbar'%>
     <%= yield %>
+      <%= render 'shared/footer'%>
     </div>
   </body>
 </html>
