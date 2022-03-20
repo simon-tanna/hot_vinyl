@@ -332,6 +332,80 @@ Hot Vinyl Records features models relevant to the running of the application wit
 
 ## Database Relations
 
+For reference, all relationship descriptions in the following headings are made with reference to the Entity Relationship Diagram (ERD) above.
+
+### User and Product
+
+The user and product entities are linked via two relationships.
+
+#### Buys | One (User) to Many (Products) Relationship
+
+- 1 Buying User : Many Products
+  - One user can buy many products
+  - One product can have only one buying user
+
+#### Sells | One (User) to Many (Products) Relationship
+
+- 1 Selling User : Many Products
+  - One user can sell many products
+  - One product can have only one selling user
+
+Within the database, the product table includes a user_id foreign key to identifying the selling user.
+
+### User, Product and Order
+
+#### Buys | One (User) to Many (Orders) Relationship
+
+- 1 Buying User : Many Orders
+  - One user can place(buy) many orders
+  - One order can have only one ordering user
+
+#### Have | One (Product) to One (Order) Relationship
+
+- 1 Product : 1 Order
+  - Only one product can be bought in an order
+  - One order can have only one product in that order
+
+Within the database, the order table includes a user_id foreign key to identifying the buying user and a product_id foreign key to identify the product being sold.
+
+In the implementation of this relationship, a user is able to place one order for one product but can do this for many products, thereby creating many orders.
+
+### User, Product and Review
+
+#### Writes | One (User) to Many (Reviews) Relationship
+
+- 1 Writing User : Many Reviews
+  - One user can write many reviews 
+  - One review can have only one writing user
+
+#### Have | One (Product) to One (Review) Relationship
+
+- 1 Writing User : Many Reviews
+  - One product can have only one review 
+  - A review is attached to only one product
+
+Within the database, the review table includes a user_id foreign key to identifying the writing user and a product_id foreign key to identify the product being reviewed.
+
+In the implementation of this relationship, a user is able to write one review for one product but can do this for many products they have bought, thereby creating many reviews.
+
+### Product and Category
+
+#### Have | One (Category) to Many (Products) Relationship
+
+- 1 Category : Many Products
+  - One category can contain many products
+  - One product can be associated with only one category
+
+Within the database, the product table includes a category_id foreign key to identifying the associated category.
+
+###  Product and Active Storage Image
+
+#### Have | One (Product) to One (Image) Relationship
+
+- 1 Product : 1 Image
+  - One product will have one image attached in active storage
+  - One active storage image will be associated with one product
+
 
 
 place holder url for album image
