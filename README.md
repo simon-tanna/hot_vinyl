@@ -406,7 +406,57 @@ Within the database, the product table includes a category_id foreign key to ide
   - One product will have one image attached in active storage
   - One active storage image will be associated with one product
 
+## Database Schema
 
+Below are edited schema designs for each of the database models used by Hot Vinyl Records containing the custom attributes and relationship added by the developer.
+
+### User
+
+    create_table "users", force: :cascade do |t|
+        t.string "email", default: "", null: false
+        ...
+        t.string "username", null: false
+        t.boolean "admin", default: false
+        t.boolean "seller"
+    end
+
+### Product
+
+    create_table "products", force: :cascade do |t|
+        t.string "name"
+        t.string "artist"
+        t.float "price"
+        t.integer "vinyl_weight"
+        t.string "catalog_number"
+        t.string "condition"
+        t.bigint "user_id", null: false
+        ...
+        t.boolean "sold_status", default: false
+        t.bigint "category_id", null: false
+        t.index ["category_id"], name: "index_products_on_category_id"
+        t.index ["user_id"], name: "index_products_on_user_id"
+    end
+
+    add_foreign_key "products", "categories"
+    add_foreign_key "products", "users
+
+### Category
+
+    create_table "categories", force: :cascade do |t|
+        t.string "name", null: false
+        ...
+    end
+
+### Order
+
+    create_table "orders", force: :cascade do |t|
+        t.bigint "user_id", null: false
+        t.bigint "product_id", null: false
+        ...
+        t.string "receipt_url"
+        t.index ["product_id"], name: "index_orders_on_product_id"
+        t.index ["user_id"], name: "index_orders_on_user_id"
+    end
 
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
