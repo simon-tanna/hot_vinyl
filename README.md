@@ -74,27 +74,27 @@ Site administrators are able to edit and delete listings or reviews if they do n
 
 ## Screenshots
 
-### Home Page
+### Home Page Screenshot
 
 ![Hot Vinyl Records Home](/app/assets/images/markdown_resource/screens/home.jpg)
 
-### Sign Up Page
+### Sign Up Page Screenshot
 
 ![Hot Vinyl Records Sign Up](/app/assets/images/markdown_resource/screens/signup_screen.jpg)
 
-### Sign In Page
+### Sign In Page Screenshot
 
 ![Hot Vinyl Records Sign In](/app/assets/images/markdown_resource/screens/signin_screen.jpg)
 
-### Category View
+### Category View Screenshot
 
 ![Hot Vinyl Records Category View](/app/assets/images/markdown_resource/screens/category_screen.jpg)
 
-### Product View
+### Product View Screenshot
 
 ![Hot Vinyl Records Product View](/app/assets/images/markdown_resource/screens/product_screen.jpg)
 
-### Profile View
+### Profile View Screenshot
 
 ![Hot Vinyl Records Profile View](/app/assets/images/markdown_resource/screens/profile_screen.jpg)
 
@@ -286,7 +286,7 @@ This code will only allow the product seller or a site admin to perform these ac
 
 ## Third-Party Services
 
-### Cloud Storage
+### Cloud Storage Service
 
 #### Amazon S3
 
@@ -298,7 +298,7 @@ Hot Vinyl Records uses the Amazon S3 service to store and retrieve images upload
 
 Payments between a buyer and Hot Vinyl Records are handled by the Stripe payment service. Stripe fetches the buyer and product information to create a new order and allows payment via credit card.
 
-### Deployment
+### Deployment Service
 
 #### Heroku
 
@@ -419,13 +419,13 @@ In the implementation of this relationship, a user is able to place one order fo
 #### Writes | One (User) to Many (Reviews) Relationship
 
 - 1 Writing User : Many Reviews
-  - One user can write many reviews 
+  - One user can write many reviews
   - One review can have only one writing user
 
 #### Have | One (Product) to One (Review) Relationship
 
 - 1 Writing User : Many Reviews
-  - One product can have only one review 
+  - One product can have only one review
   - A review is attached to only one product
 
 Within the database, the review table includes a user_id foreign key to identifying the writing user and a product_id foreign key to identify the product being reviewed.
@@ -442,7 +442,7 @@ In the implementation of this relationship, a user is able to write one review f
 
 Within the database, the product table includes a category_id foreign key to identifying the associated category.
 
-###  Product and Active Storage Image
+### Product and Active Storage Image
 
 #### Have | One (Product) to One (Image) Relationship
 
@@ -520,7 +520,7 @@ Below are edited schema designs for each of the database models used by Hot Viny
     add_foreign_key "reviews", "products"
     add_foreign_key "reviews", "users"
 
-## Project Management
+## Project Management Process
 
 ### Task Allocation and Tracking
 
@@ -561,6 +561,7 @@ To test admin permissions, login as user4@test.com password: 123123
 [Placeholder album image](https://unsplash.com/photos/hrUhyFq6u-A) - Brett Jordan photographer
 
 ### References
+
 AfterAcademy 2019, What is Data Abstraction in DBMS and what are its three levels?, Afteracademy.com, viewed 19 March 2022, <https://afteracademy.com/blog/what-is-data-abstraction-in-dbms-and-what-are-its-three-levels>.
 
 ‌
