@@ -476,11 +476,35 @@ Below are edited schema designs for each of the database models used by Hot Viny
     add_foreign_key "reviews", "products"
     add_foreign_key "reviews", "users"
 
+## Project Management
 
+### Task Allocation and Tracking
 
-place holder url for album image
-https://unsplash.com/photos/hrUhyFq6u-A
-Brett Jordan photographer
+Trello was used to track and allocate tasks during the build of the Hot Vinyl Records application. The list of categories used within the Trello board are as follows:
+
+- Pre-Development: Featuring plans for the application such as wireframes, ERD and sitemap
+- Personas: A reference list of types of users featured by the app
+- User Stories: A list of what each type of user can do within the app. This is useful for making sure a certain type of user can perform a certain action
+- Backlog: All tasks related to the creation and deployment of the app yet to be completed. Throughout development, task cards are added to this list frequently
+- In-Development (Code): Tasks currently in progress relating to coding aspects of the application. This is useful if a task has not been completed by referencing progress.
+- In-Development (Non-Code): All tasks in progress not coding related such as README.md
+- Testing: Tests to be performed
+- Done: All completed task cards are moved to this list
+  
+Each type of task would be allocated to the appropriate list and set a coloured label indicating the following status:
+
+- Complete
+- In-Progress
+- High Priority
+- To-Do
+- Help Needed
+- Refine if Needed
+
+High priority tasks would be completed first.
+
+### Credits
+
+[Placeholder album image](https://unsplash.com/photos/hrUhyFq6u-A) - Brett Jordan photographer
 
 ### References
 AfterAcademy 2019, What is Data Abstraction in DBMS and what are its three levels?, Afteracademy.com, viewed 19 March 2022, <https://afteracademy.com/blog/what-is-data-abstraction-in-dbms-and-what-are-its-three-levels>.
