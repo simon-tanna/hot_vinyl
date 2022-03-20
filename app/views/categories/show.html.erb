@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<main class="row row-cols-1 row-cols-md-3 g-4">
 <h1>
   <strong>Category -</strong>
   <%= @category.name %>
@@ -8,16 +8,25 @@
 <% @category_products.each do |product| %>
   <%# Only displaying albums that have not been sold %>
   <% if product.sold_status == false %>
-  <div>
-    <h2><%= product.name %></h2>
-    <h4><%= product.artist %></h4>
-    <% if product.picture.attached? %>
-      <%= image_tag product.picture, size: "250x250" %>
-    <% else %>
-      <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250") %>
-    <% end %>
-    <p>Album Price: $<%= product.price %>0</p>
-    <%= link_to "Show Album", product_path(product.id) %>
+  <div class="col">
+    <div class="card">
+      <% if product.picture.attached? %>
+        <%= image_tag product.picture, class: "img-fluid" %>
+      <% else %>
+        <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", class: "img-fluid") %>
+      <% end %>
+      <div class="card-body">
+                <h5 class="card-title"><%= product.name %></h5>
+                <p class="card-text"><%= product.artist %></p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Price: $<%= product.price %>0</li>
+                <li class="list-group-item">Seller: <%= link_to product.user.username, product.user %></li>
+            </ul>
+            <div class="card-body">
+                <a class="card-link"><%= link_to 'Show', product %></a>
+            </div>
+    </div>
   </div>
   <% end %>
 <% end %>
@@ -26,3 +35,5 @@
   <%= link_to 'Edit', edit_category_path(@category) %>
 <% end %>
 <%= link_to 'Back', categories_path %>
+
+</main>
