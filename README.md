@@ -74,7 +74,7 @@ Site administrators are able to edit and delete listings or reviews if they do n
 
 ## Screenshots
 
-Attach here
+
 
 ## Tech Stack
 
