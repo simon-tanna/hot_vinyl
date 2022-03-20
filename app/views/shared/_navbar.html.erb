@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
     <a><%= link_to 'Hot Vinyl Records Home', categories_path, class: "navbar-brand" %></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,7 +58,6 @@
       <form class="d-flex">
         <%= search_field_tag :search, params[:search], placeholder: "Search for Album or Artist", class: "form-control me-2" %>
         <%= button_tag "Search", class: "btn btn-outline-success" %>
-
       </form>
       <% end %>
     </div>
