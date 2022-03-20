@@ -1,8 +1,9 @@
 class ReviewsController < ApplicationController
     before_action :find_product
     before_action :find_review, only: [:edit, :update, :destroy]
-    before_action :owner_or_admin, only: [:edit, :update, :destroy]
     before_action :authenticate_user!, only: [:new, :edit, :create, :update]
+    # Checks if logged in user owns review or is admin
+    before_action :owner_or_admin, only: [:edit, :update, :destroy]
 
     # GET method to create new review
     def new

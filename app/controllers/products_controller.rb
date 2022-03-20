@@ -1,9 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  # verifying user is a seller before listing new product for sale
   before_action :verified_seller, only: [:new, :create, :my_selling_products]
+  # verifies the user owns a listing or has admin permissions
   before_action :owner_or_admin, only: [:edit, :update, :destroy]
+  # Stops selling user from editing or deleting item if it has been sold
   before_action :sold_item, only: [:edit, :update, :destroy]
+  # Before action to invoke sort on index and recently sold
   before_action :product_sort, only: [:index, :recently_sold]
   # This invokes the helper method created to sort the columns in index and recently sold
   helper_method :sort_column, :sort_direction
@@ -63,10 +67,8 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.save
         format.html { redirect_to product_url(@product), notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -78,10 +80,8 @@ class ProductsController < ApplicationController
     respond_to do |format|
       if @product.update(params.require(:product).permit(:name, :artist, :price, :category_id, :vinyl_weight, :catalog_number, :condition, :picture))
         format.html { redirect_to product_url(@product), notice: "Product was successfully updated." }
-        format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -92,7 +92,6 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
-      format.json { head :no_content }
     end
   end
 

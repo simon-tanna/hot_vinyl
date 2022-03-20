@@ -1,8 +1,11 @@
 class OrdersController < ApplicationController
   before_action :find_product, only: [:new, :create]
+  # converts payment amount to integer
   before_action :charge_amount, only: [:new, :create]
+  # passes in description of product to allowed methods
   before_action :set_description, only: [:new, :create]
   before_action :authenticate_user!
+  # Stops seller from buying own product
   before_action :is_owner, only: [:new, :create]
 
   # Displays the orders placed by the current user.
