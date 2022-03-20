@@ -458,6 +458,26 @@ Below are edited schema designs for each of the database models used by Hot Viny
         t.index ["user_id"], name: "index_orders_on_user_id"
     end
 
+    add_foreign_key "orders", "products"
+    add_foreign_key "orders", "users"
+
+### Review
+
+    create_table "reviews", force: :cascade do |t|
+        t.string "comment", null: false
+        t.integer "rating", null: false
+        t.bigint "product_id", null: false
+        t.bigint "user_id", null: false
+        ...
+        t.index ["product_id"], name: "index_reviews_on_product_id"
+        t.index ["user_id"], name: "index_reviews_on_user_id"
+    end
+
+    add_foreign_key "reviews", "products"
+    add_foreign_key "reviews", "users"
+
+
+
 place holder url for album image
 https://unsplash.com/photos/hrUhyFq6u-A
 Brett Jordan photographer
