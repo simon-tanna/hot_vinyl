@@ -1,40 +1,80 @@
-<h2>Sign up</h2>
+<!-- Section: Design Block -->
+<section class="">
+  <!-- Jumbotron -->
+  <div
+      class="px-4 py-5 px-md-5 text-center text-lg-start"
+      style="background-color: hsl(0, 0%, 96%)"
+      >
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 fw-bold ls-tight">
+            Sign up <br />
+            <span class="fw-bold ls-tight">to start your vinyl adventure</span>
+          </h1>
+          <p style="color: hsl(217, 10%, 50.8%)">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
+            quibusdam tempora at cupiditate quis eum maiores libero
+            veritatis? Dicta facilis sint aliquid ipsum atque?
+          </p>
+        </div>
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+              <form>
+                <!-- 2 column grid layout with text inputs for the first and last names -->
+                <div class="row">
+                  <div class="form-outline mb-4">
+                    <%= f.label :username, class: "form-label" %>
+                    <%= f.text_field :username, autofocus: true, required: true, id: "form3Example1", class: "form-control" %>
+                  </div>
+                </div>
+                <!-- Email input -->
+                <div class="form-outline mb-4">
+                  <%= f.label :email, class: "form-label" %>
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "form3Example3", class: "form-control" %><br />
+                </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-<%# Username field added %>
-  <div class="mb-3">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, autofocus: true, required: true %>
+                <!-- Password input -->
+                <div class="form-outline mb-4">
+                  <%= f.label :password, class: "form-label" %>
+                  <% if @minimum_password_length %>
+                  <em>(<%= @minimum_password_length %> characters minimum)</em>
+                  <% end %><br />
+                  <%= f.password_field :password, autocomplete: "new-password", id: "form3Example4", class: "form-control" %>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <%= f.label :password_confirmation, class: "form-label" %><br />
+                  <%= f.password_field :password_confirmation, autocomplete: "new-password", id: "form3Example4", class: "form-control" %>
+                </div>
+
+                <!-- Checkbox -->
+                
+                <div class="form-check d-flex justify-content-center mb-3">
+                  <%= f.check_box :seller, class: "form-check-input me-2", id: "form2Example33" %>
+                  <%= f.label "Would you like to sell vinyl?", class: "form-check-label" %>
+                </div>
+                
+
+                <!-- Submit button -->
+                <%= f.submit "Sign up", class: "btn btn-primary btn-block mb-4" %>
+              
+              <br>
+
+                <%= render "devise/shared/links" %>
+              </form>
+            <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
 
-  <div class="mb-3">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <%# Seller checkbox field %>
-  <div class="mb-3">
-    <%= f.label "Would you like to sell items?" %>
-    <%= f.check_box :seller, class: "form-check-input" %>
-  </div>
-
-  <div class="mb-3">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="mb-3">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
