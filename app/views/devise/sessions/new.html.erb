@@ -1,26 +1,56 @@
-<h2>Log in</h2>
+<!-- Section: Design Block -->
+<section class="">
+  <!-- Jumbotron -->
+  <div
+      class="px-4 py-5 px-md-5 text-center text-lg-start"
+      style="background-color: hsl(0, 0%, 96%)"
+      >
+    <div class="container">
+      <div class="row gx-lg-5 align-items-center">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <h1 class="my-5 display-3 fw-bold ls-tight">
+            Sign in <br />
+            <span class="fw-bold ls-tight">to continue your vinyl adventure</span>
+          </h1>
+          <p style="color: hsl(217, 10%, 50.8%)">
+            By signing into your Hot Vinyl Records account, you will be able to buy, sell and review only the finest, rarest and most unique vinyl records around.
+          </p>
+        </div>
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="card">
+            <div class="card-body py-5 px-md-5">
+              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+                <form>
+                <div class="form-outline mb-4">
+                  <%= f.label :email, class: "form-label" %><br />
+                  <%= f.email_field :email, autofocus: true, autocomplete: "email", id: "form3Example1", class: "form-control" %>
+                </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+                <div class="field">
+                  <%= f.label :password, class: "form-label" %><br />
+                  <%= f.password_field :password, autocomplete: "current-password", id: "form3Example4", class: "form-control" %>
+                </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+                <% if devise_mapping.rememberable? %>
+                  <div class="field">
+                    <%= f.check_box :remember_me, class: "form-check-input me-2", id: "form2Example33" %>
+                    <%= f.label :remember_me, class: "form-check-label" %>
+                  </div>
+                <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+                <div class="actions">
+                  <%= f.submit "Sign in", class: "btn btn-primary btn-block mb-4" %>
+                </div>
+              </form>
+              <% end %>
+
+              <%= render "devise/shared/links" %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
