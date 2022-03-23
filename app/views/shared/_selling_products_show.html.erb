@@ -1,13 +1,12 @@
-<div class="table">
-  <table class="table align-middle">
-    <thead>
+  <table class="table align-middle mb-0 bg-white">
+    <thead class="bg-light">
       <tr>
-        <th scope="col">&#8593;&#8595;<%= sorts 'name' %></th>
-        <th scope="col">&#8593;&#8595;<%= sorts 'artist' %></th>
-        <th scope="col">&#8593;&#8595;<%= sorts 'price' %></th>
-        <th scope="col">&#8593;&#8595;<%= sorts 'user_id', 'Seller' %></th>
-        <th scope="col" class="d-none d-md-block"></th>
-        <th scope="col">View Product</th>
+        <th>&#8593;&#8595;<%= sorts 'name' %></th>
+        <th>&#8593;&#8595;<%= sorts 'artist' %></th>
+        <th>&#8593;&#8595;<%= sorts 'price' %></th>
+        <th>&#8593;&#8595;<%= sorts 'user_id', 'Seller' %></th>
+        <%# <th class="d-none d-md-block"></th> %>
+        <th>View Product</th>
       </tr>
     </thead>
 
@@ -16,23 +15,36 @@
       <%# Evaluates if the item has been sold. Item will be shown on index page if not sold %>
         <% if product.sold_status == false %>
           <tr>
-            <td><%= product.name %></td>
-            <td><%= product.artist %></td>
-            <td>$<%= product.price %>0</td>
-            <td><%= link_to product.user.username, product.user %></td>
-            <% if product.picture.attached? %>
-              <td class="d-none d-md-block">
-                <%= image_tag product.picture, size: "250x250", class: "img-fluid" %>
-              </td>
-            <% else %>
-              <td class="d-none d-md-block">
-                <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", size: "250x250", class: "img-fluid") %>
-              </td>
-            <% end %>
-            <td><%= link_to 'Show', product %></td>
+            <td>
+              <div class="d-flex align-items-center">
+                <% if product.picture.attached? %>
+                  <p>
+                    <%= image_tag product.picture, class: "rounded-circle", style: "width: 45px; height: 45px" %>
+                  </p>
+                <% else %>
+                  <td class="d-none d-md-block">
+                    <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", class: "rounded-circle", style: "width: 45px; height: 45px") %>
+                  </td>
+                <% end %>
+                <div class="ms-3">
+                  <p class="fw-bold mb-1"><%= product.name %></p>
+                </div>
+              </div>
+            </td>
+            <td>
+              <p class="fw-normal mb-1" ><%= product.artist %></p>
+            </td>
+            <td>
+              <p class="fw-normal mb-1">$<%= product.price %>0</p>
+            </td>
+            <td>
+              <p><%= link_to product.user.username, product.user, class: "btn btn-link btn-rounded btn-sm fw-bold"  %></p>
+            </td>
+            <td>
+              <p><%= link_to 'Show', product, class: "btn btn-link btn-rounded btn-sm fw-bold" %></p>
+            </td>
           </tr>
         <% end %>
       <% end %>
     </tbody>
   </table>
-</div>
