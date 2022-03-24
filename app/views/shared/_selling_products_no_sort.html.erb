@@ -5,9 +5,9 @@
         <div class="col">
             <div class="card">
                 <% if product.picture.attached? %>
-                    <%= image_tag product.picture, class: "img-fluid" %>
+                    <%= image_tag product.picture, class: "card-img-top" %>
                 <% else %>
-                    <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", class: "img-fluid") %>
+                    <%= image_tag("placeholder_record.jpg", alt: "placeholder record image", class: "card-img-top") %>
                 <% end %>
             <div class="card-body">
                 <h5 class="card-title"><%= product.name %></h5>
@@ -18,7 +18,7 @@
                 <li class="list-group-item">Seller: <%= link_to product.user.username, product.user %></li>
             </ul>
             <div class="card-body">
-                <a class="card-link"><%= link_to 'Show', product %></a>
+                <a class="card-link"><%= link_to 'Show', product, class: "btn btn-primary" %></a>
             </div>
             </div>
         </div>
