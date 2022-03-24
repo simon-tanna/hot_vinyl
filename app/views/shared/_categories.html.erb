@@ -1,7 +1,7 @@
 
-  <div class="flex flex-wrap justify-center min-w-full text-center">
+  <div class="d-flex justify-content-center align-items-center h-100">
     <% @categories.each do |category| %>
-        <button type="button" class=" mb-3 btn btn-light btn-lg"><%= link_to category.name, category %></button>
+        <button style="background-color: rgba(0, 0, 0, 0.6);"><%= link_to category.name, category, class: "btn btn-outline-light btn-lg mask",  role: "button" %></button>
         <%# Displays CRUD options if user is admin %>
           <% if user_signed_in? and current_user.admin? %>
             <td><%= link_to 'Edit', edit_category_path(category) %></td>
