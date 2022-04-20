@@ -1,12 +1,11 @@
 
 <main class="text-center">
-<header>
   <!-- Background image -->
   <div
-    class="p-5 text-center bg-image"
+    class="p-5 text-center bg-image d-flex"
     style="
       background-image: url('/assets/krayboul-aIXmjJCq__A-unsplash.jpg');
-      height: 400px;
+      min-height: 400px;
     "
   >
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
@@ -14,10 +13,9 @@
         <div class="text-white">
           <h1 class="mb-3">Welcome to Hot Vinyl Records</h1>
           <h4 class="mb-3">Select a genre to start shopping top-quality vinyl</h4>
-          <%= render 'shared/categories' %>
+            <%= render 'shared/categories' %>
           <h4 class="mb-3">or</h4>
-          <a><%= link_to 'View all albums', products_path, class: "btn btn-outline-light btn-lg",  role: "button" %></a
-          >
+          <a><%= link_to 'View all albums', products_path, class: "btn btn-outline-light btn-lg",  role: "button" %></a>
         </div>
       </div>
     </div>
